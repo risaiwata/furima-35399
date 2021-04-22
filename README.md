@@ -45,17 +45,17 @@ Things you may want to cover:
 
 ### products テーブル
 
-| Column            | Type      | Options                      |
-| ----------------- | --------- | ---------------------------- |
-|title              |string     | null: false                  |
-|text               |text       | null: false                  |
-|category_id        |integer    | null: false                  |
-|delivery_charge_id |integer    | null: false                  |
-|product_status_id  |integer    | null: false                  |
-|area_id            |integer    | null: false                  |
-|delivery_day_id    |integer    | null: false                  |
-|price              |integer    | null: false                  |
-|user               |references | foreign_key: true            |
+| Column            | Type      | Options           |
+| ----------------- | --------- | ----------------- |
+|title              |string     | null: false       |
+|text               |text       | null: false       |
+|category_id        |integer    | null: false       |
+|delivery_charge_id |integer    | null: false       |
+|product_status_id  |integer    | null: false       |
+|area_id            |integer    | null: false       |
+|delivery_day_id    |integer    | null: false       |
+|price              |integer    | null: false       |
+|user               |references | foreign_key: true |
 
 ### Association
 
@@ -64,15 +64,15 @@ Things you may want to cover:
 
 ### addresses テーブル
 
-| Column        | Type      | Options                      |
-| ------------- | --------- | ---------------------------- |
-|postal_code_id |string     | null: false                  |
-|area_id        |integer    | null: false                  |
-|city           |string     | null: false                  |
-|address_line   |string     | null: false                  |
-|building       |string     |                              |
-|phonenumber    |string     | null: false                  |
-|purchaser      |references | foreign_key: true            |
+| Column        | Type      | Options           |
+| ------------- | --------- | ----------------- |
+|postal_code_id |string     | null: false       |
+|area_id        |integer    | null: false       |
+|city           |string     | null: false       |
+|address_line   |string     | null: false       |
+|building       |string     |                   |
+|phonenumber    |string     | null: false       |
+|purchaser      |references | foreign_key: true |
 
 ### Association
 
@@ -80,10 +80,10 @@ Things you may want to cover:
 
 ### purchasers テーブル
 
-| Column     | Type      | Options                      |
-| ---------- | --------- | ---------------------------- |
-|user        |references | references,foreign_key: true |
-|product     |references | references,foreign_key: true |
+| Column     | Type      | Options           |
+| ---------- | --------- | ----------------- |
+|user        |references | foreign_key: true |
+|product     |references | foreign_key: true |
 
 ### Association
 
