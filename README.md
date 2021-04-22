@@ -55,7 +55,7 @@ Things you may want to cover:
 |area_id            |integer    | null: false                  |
 |delivery_day_id    |integer    | null: false                  |
 |price              |integer    | null: false                  |
-|user               |references |                              |
+|user               |references | foreign_key: true            |
 
 ### Association
 
@@ -72,21 +72,21 @@ Things you may want to cover:
 |address_line   |string     | null: false                  |
 |building       |string     |                              |
 |phonenumber    |string     | null: false                  |
-|purchaser      |references |                              |
+|purchaser      |references | foreign_key: true            |
 
 ### Association
 
-- belongs_to :product
+- belongs_to :purchaser
 
 ### purchasers テーブル
 
 | Column     | Type      | Options                      |
 | ---------- | --------- | ---------------------------- |
 |user        |references | references,foreign_key: true |
-|products    |references | references,foreign_key: true |
+|product     |references | references,foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :product
-- belongs_to :address
+- has_one :address
