@@ -27,18 +27,17 @@ Things you may want to cover:
 
 ### users テーブル
 
-| Column        | Type  | Options     |
-| ------------- | ----- | ----------- |
-|nickname       |string | null: false |
-|email          |string | null: false |
-|password       |string | null: false |
-|first_name     |string | null: false |
-|last_name      |string | null: false |
-|first_name_ruby|string | null: false |
-|last_name_ruby |string | null: false |
-|year           |int    | null: false |
-|month          |int    | null: false |
-|day            |int    | null: false |
+| Column           | Type  | Options                  |
+| ---------------- | ----- | ------------------------ |
+|nickname          |string | null: false              |
+|email             |string | null: false, unique: true|
+|encrypted_password|string | null: false              |
+|first_name        |string | null: false              |
+|last_name         |string | null: false              |
+|first_name_ruby   |string | null: false              |
+|last_name_ruby    |string | null: false              |
+|birthdate         |date   | null: false              |
+
 
 ### Association
 - has_many :products
@@ -46,39 +45,46 @@ Things you may want to cover:
 
 ### products テーブル
 
-| Column         | Type      | Options     |
-| -------------- | --------- | ----------- |
-|title           |string     | null: false |
-|text            |text       | null: false |
-|category        |string     | null: false |
-|delivery_charge |string     | null: false |
-|area            |text       | null: false |
-|delivery_day    |string     | null: false |
-|price           |string     | null: false |
-|user_id         |references | references  |
+| Column         | Type      | Options                      |
+| -------------- | --------- | ---------------------------- |
+|title           |string     | null: false                  |
+|text            |text       | null: false                  |
+|category        |string     | null: false                  |
+|delivery_charge |integer    | null: false                  |
+|product_status  |integer    | null: false                  |
+|area            |integer    | null: false                  |
+|delivery_day    |integer    | null: false                  |
+|price           |integer    | null: false                  |
+|user            |references | references,foreign_key: true |
 
 ### Association
 
 - belongs_to :user 
-- has_one :purchasers
+- has_one :purchaser
 
-### purchasers テーブル
+### addresses テーブル
 
-| Column     | Type      | Options     |
-| ---------- | --------- | ----------- |
-|card_number |text       | null: false |
-|postal_code |text       | null: false |
-|prefecture  |text       | null: false |
-|city        |text       | null: false |
-|address_line|text       | null: false |
-|phonenumber |text       | null: false |
-|user_id     |references | references  |
-|products_id |references | references  |
-
+| Column     | Type      | Options                      |
+| ---------- | --------- | ---------------------------- |
+|postal_code |integer    | null: false                  |
+|prefecture  |integer    | null: false                  |
+|city        |string     | null: false                  |
+|address_line|string     | null: false                  |
+|phonenumber |integer    | null: false                  |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :products
 
+### purchasers テーブル
 
+| Column     | Type      | Options                      |
+| ---------- | --------- | ---------------------------- |
+|user        |references | references,foreign_key: true |
+|products    |references | references,foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :products
