@@ -27,14 +27,18 @@ Things you may want to cover:
 
 ### users テーブル
 
-| Column   | Type  | Options     |
-| -------- | ----- | ----------- |
-|nickname  |string | null: false |
-|email     |string | null: false |
-|password  |string | null: false |
-|name      |string | null: false |
-|name_ruby |string | null: false |
-|birthdate |string | null: false |
+| Column        | Type  | Options     |
+| ------------- | ----- | ----------- |
+|nickname       |string | null: false |
+|email          |string | null: false |
+|password       |string | null: false |
+|first_name     |string | null: false |
+|last_name      |string | null: false |
+|first_name_ruby|string | null: false |
+|last_name_ruby |string | null: false |
+|year           |int    | null: false |
+|month          |int    | null: false |
+|day            |int    | null: false |
 
 ### Association
 - has_many :products
@@ -49,7 +53,7 @@ Things you may want to cover:
 |category        |string     | null: false |
 |delivery_charge |string     | null: false |
 |area            |text       | null: false |
-|days            |string     | null: false |
+|delivery_day    |string     | null: false |
 |price           |string     | null: false |
 |user_id         |references | references  |
 
@@ -76,4 +80,5 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :products
+
 
