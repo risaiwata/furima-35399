@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
-  def create
-    @user = User.new(params[:user][:birthdate])
-    @user.save
-  end
 
-  private
-def user_params
-  params.require(:user).permit(:birthdate)
-end
+  #def index
+  # @users=User.all
+  #end
+
+  #def create
+  #  @user = User.new
+  # if @user.save
+  #   redirect_to root_path
+  #  else
+  #    render new_user_session_path
+  #  end
+  #end
 
 end
