@@ -55,12 +55,6 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
 
-    it 'nicknameが空では登録できない' do
-      @user.nickname = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname can't be blank")
-    end
-
     it 'first_nameが空では登録できない' do
       @user.first_name = ''
       @user.valid?
@@ -113,6 +107,12 @@ RSpec.describe User, type: :model do
       @user.last_name_ruby = 'ｱｲｳｴｵ'
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name ruby is invalid")
+    end
+
+    it 'メールアドレスは、@を含む必要があること' do
+      @user.email = 'testexample.com'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Email is invalid")
     end
   end
 end
