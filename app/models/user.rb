@@ -18,4 +18,5 @@ class User < ApplicationRecord
             VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
             validates :password, format: {with: VALID_PASSWORD_REGEX, message: "は英数字混合にしてください"}
           end
+          has_many :products
 end
