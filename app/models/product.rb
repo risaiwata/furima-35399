@@ -10,9 +10,9 @@ class Product < ApplicationRecord
   has_one_attached :image
 
   validates :title, :text, :price, presence: true
-  validates :area_id, numericality: { other_than: 1 } 
-  validates :delivery_day_id, numericality: { other_than: 1 } 
-  validates :product_status_id, numericality: { other_than: 1 } 
-  validates :delivery_charge_id, numericality: { other_than: 1 } 
-  validates :category_id, numericality: { other_than: 1 } 
+  validates :area_id, numericality: { other_than: 0 } 
+  validates :delivery_day_id, numericality: { other_than: 0 } 
+  validates :product_status_id, numericality: { other_than: 0 } 
+  validates :delivery_charge_id, numericality: { other_than: 0 } 
+  validates :category_id, numericality: { other_than: 0 } 
 end
