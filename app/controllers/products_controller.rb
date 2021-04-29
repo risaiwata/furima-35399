@@ -1,13 +1,10 @@
 class ProductsController < ApplicationController
-  def index
-    @products = Product.all.order("created_at DESC")
-  end
+  #def index
+    #@products = Product.all.order("created_at DESC")
+  #end
 
   def new
     @product = Product.new
-    unless user_signed_in?
-      redirect_to root_path
-    end
   end
 
   def create
