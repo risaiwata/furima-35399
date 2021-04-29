@@ -9,10 +9,17 @@ class Product < ApplicationRecord
   belongs_to :user 
   has_one_attached :image
 
-  validates :title, :text, :price, presence: true
-  validates :area_id, numericality: { other_than: 0 } 
-  validates :delivery_day_id, numericality: { other_than: 0 } 
-  validates :product_status_id, numericality: { other_than: 0 } 
-  validates :delivery_charge_id, numericality: { other_than: 0 } 
-  validates :category_id, numericality: { other_than: 0 } 
+  with_options presence: true do
+    validates :image
+    validates :title
+    validates :text
+    validates :price, inclusion: { in: 300..9999999 }, format: { with: /\A[0-9]+\z/ }
+  end
+    with_options numericality: { other_than: 0 } do
+      validates :area_id
+      validates :delivery_day_id
+      validates :product_status_id
+      validates :delivery_charge_id
+      validates :category_id
+  end
 end

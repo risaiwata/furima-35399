@@ -5,6 +5,9 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 
   def create
