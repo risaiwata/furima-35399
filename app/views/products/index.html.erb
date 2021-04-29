@@ -125,22 +125,23 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-      <% @products.each do |product| %>
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <% #@products.each do |product| %>
         <li class='list'>
-          <%= link_to product_path(product) do %>
+          <%=# link_to product_path(product) do %>
           <div class='item-img-content'>
             <%= image_tag product.image , class: "item-img" %>
 
-            <% if @product.present? %>
+            <% #if @product.present? %>
             <div class='sold-out'>
               <span>Sold Out!!</span>
             </div>
-            <% end %>
+            <% #end %>
 
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
-              <%= product.title %>
+              <%= #product.title %>
             </h3>
             <div class='item-price'>
               <span><%= product.price %>円<br><%= product.delivery_charge.name %></span>
@@ -150,12 +151,13 @@
               </div>
             </div>
           </div>
-        <% end %>
+        <%# end %>
         </li>
-      <% end %>
+      <%# end %>
+      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
       
-      <% if @product.present? %>
+      <% #if @product.present? %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -173,7 +175,7 @@
         </div>
         <% end %>
       </li>
-      <% end %>
+      <% #end %>
     </ul>
   </div>
   <%# /商品一覧 %>
