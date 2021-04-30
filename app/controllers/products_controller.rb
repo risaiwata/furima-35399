@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 before_action :authenticate_user!, only:[:new, :create, :edit, :update]
-before_action :set_product, only:[:show, :edit, :update]
+before_action :set_product, only:[:show, :edit, :update, :destroy]
 before_action :set_user_validate, only:[:edit, :update]
 
   def index
@@ -34,6 +34,15 @@ before_action :set_user_validate, only:[:edit, :update]
     end
   end
 
+  def destroy
+    if current_user.id != @product.user.id
+      redirect_to root_path
+    else
+      @product.destroy
+    redirect_to root_path
+    end
+  end
+
 
   private
   def product_params
@@ -45,6 +54,6 @@ before_action :set_user_validate, only:[:edit, :update]
   end
 
   def set_user_validate
-    @product.user_id == current_user.id
+    redirect_to root_pah if @product.user_id != current_user.id
   end
 end
