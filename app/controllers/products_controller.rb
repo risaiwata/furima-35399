@@ -54,6 +54,6 @@ before_action :set_user_validate, only:[:edit, :update]
   end
 
   def set_user_validate
-    @product.user_id == current_user.id
+    redirect_to root_pah if @product.user_id != current_user.id
   end
 end
