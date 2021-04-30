@@ -35,8 +35,12 @@ before_action :set_user_validate, only:[:edit, :update]
   end
 
   def destroy
-    @product.destroy
+    if current_user.id != @product.user.id
+      redirect_to root_path
+    else
+      @product.destroy
     redirect_to root_path
+    end
   end
 
 
