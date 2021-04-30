@@ -22,15 +22,17 @@ before_action :authenticate_user!, only:[:new, :create]
 
   def edit
     @product = Product.find(params[:id])
-    unless current_user.id == @product.user_id
-      redirect_to root_path
+    if @product.user == current_user
+      render "edit"
+    else
+      redirect_to new_user_registration_path
     end
   end
 
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to root_path
+      redirect_to product_path(@product)
     else
       render :edit
     end
