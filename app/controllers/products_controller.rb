@@ -16,9 +16,17 @@ before_action :authenticate_user!, only:[:new, :create]
       render :new
     end
   end
-
   def show
     @product = Product.find(params[:id])
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    product = Product.find(params[:id])
+    product.update(product_params)
   end
 
 
