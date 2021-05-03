@@ -19,5 +19,5 @@ class User < ApplicationRecord
             validates :password, format: {with: VALID_PASSWORD_REGEX, message: "は英数字混合にしてください"}
           end
           has_many :products
-          has_many :purchaser
+          has_many :purchasers
 end

@@ -11,5 +11,6 @@ FactoryBot.define do
     building       {'道新会館'}
     phonenumber    {'08012345678'}
     association    :purchaser
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end
