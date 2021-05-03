@@ -1,7 +1,9 @@
 class Address
     include ActiveModel::Model
     attr_accessor :postal_code_id, :area_id, :city, :address_line, :building, :phonenumber, :purchaser
-  
+    
+    belongs_to :purchaser
+    
     with_options presence: true do
       validates :user_id, :postal_code_id, :city, :address_line, :building, :phonenumber, :purchaser
       validates :postal_code_id, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
