@@ -24,6 +24,9 @@ before_action :set_user_validate, only:[:edit, :update]
   end
 
   def edit
+    if current_user.id == @product.user.id || @product.purchaser.nil? 
+      redirect_to root_path
+    end
   end
 
   def update

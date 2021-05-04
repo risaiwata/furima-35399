@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   
   belongs_to :user 
   has_one_attached :image
-  has_one :pusrchaser
+  has_one :purchaser
 
   with_options presence: true do
     validates :image

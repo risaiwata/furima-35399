@@ -1,11 +1,18 @@
 class PurchasersController < ApplicationController
+
+  before_action :set_product
   def index
-    @product = Product.find(params[:product_id])
     @purchaser_address = PurchaserAddress.new
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+    if current_user.id == @product.user_id
+      redirect_to root_path
+    else
+    end
   end
   
   def create
-    @product = Product.find(params[:product_id])
     @purchaser_address = PurchaserAddress.new(purchaser_params)
     if @purchaser_address.valid?
       pay_item
@@ -31,4 +38,9 @@ class PurchasersController < ApplicationController
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
   end
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
+
 end
