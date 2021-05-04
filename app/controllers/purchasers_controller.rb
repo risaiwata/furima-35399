@@ -1,14 +1,12 @@
 class PurchasersController < ApplicationController
 
-  before_action :set_product
+  before_action :set_product, only:[:index, :create]
+  before_action :authenticate_user!, only:[:index]
+
   def index
     @purchaser_address = PurchaserAddress.new
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
-    if current_user.id == @product.user_id
+    if current_user.id == @product.user.id
       redirect_to root_path
-    else
     end
   end
   
