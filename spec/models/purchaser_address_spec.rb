@@ -16,13 +16,7 @@ RSpec.describe PurchaserAddress, type: :model do
         expect(@purchaser).to be_valid
       end
       it 'buildingは空でも保存できること' do
-        @purchaser.postal_code_id = '123-4567'
-        @purchaser.area_id = 5
-        @purchaser.city = '渋谷区'
-        @purchaser.address_line = '渋谷1-1-1'
         @purchaser.building = ''
-        @purchaser.phonenumber = '09012345678'
-        @purchaser.token = "tok_abcdefghijk00000000000000000"
         @purchaser.valid?
       end
     end

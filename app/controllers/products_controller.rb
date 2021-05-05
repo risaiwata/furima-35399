@@ -30,13 +30,13 @@ before_action :set_user_validate, only:[:edit, :update]
   end
 
   def update
+    if @product.purchaser.nil? 
+      redirect_to root_path
+    end
     if @product.update(product_params)
       redirect_to product_path(@product)
     else
       render :edit
-    end
-    if @product.purchaser.nil? 
-      redirect_to root_path
     end
   end
 
