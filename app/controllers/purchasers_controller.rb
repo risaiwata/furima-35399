@@ -1,11 +1,11 @@
 class PurchasersController < ApplicationController
 
   before_action :set_product, only:[:index, :create]
-  before_action :authenticate_user!, only:[:index]
+  before_action :authenticate_user!, only:[:index, :create]
 
   def index
     @purchaser_address = PurchaserAddress.new
-    if current_user.id == @product.user.id
+    if current_user.id == @product.user.id || @product.purchaser.nil? 
       redirect_to root_path
     end
   end
@@ -18,6 +18,9 @@ class PurchasersController < ApplicationController
       redirect_to root_path
     else
       render :index
+    end
+    if current_user.id == @product.user.id || @product.purchaser.nil? 
+      redirect_to root_path
     end
   end
 

@@ -47,7 +47,7 @@ RSpec.describe PurchaserAddress, type: :model do
       end
 
       it 'area_idを0に選択すると保存できないこと' do
-        @purchaser.area_id = '0'
+        @purchaser.area_id = 0
         @purchaser.valid?
         expect(@purchaser.errors.full_messages).to include("Area can't be blank")
       end
@@ -68,6 +68,24 @@ RSpec.describe PurchaserAddress, type: :model do
         @purchaser.token = ''
         @purchaser.valid?
         expect(@purchaser.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'phonenumberは12桁以上では保存できないこと' do
+        @purchaser.phonenumber = '1234567890123'
+        @purchaser.valid?
+        expect(@purchaser.errors.full_messages).to include("Phonenumber 電話番号は11桁以内の数値のみ保存可能なこと")
+      end
+
+      it 'user_idが空では登録できないこと' do
+        @purchaser.user_id = ''
+        @purchaser.valid?
+        expect(@purchaser.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'product_idが空では登録できないこと' do
+        @purchaser.product_id = ''
+        @purchaser.valid?
+        expect(@purchaser.errors.full_messages).to include("Product can't be blank")
       end
     end 
   end
