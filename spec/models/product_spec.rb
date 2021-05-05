@@ -1,4 +1,4 @@
-require 'rails_helper'
+prorequire 'rails_helper'
 
 RSpec.describe Product, type: :model do
 

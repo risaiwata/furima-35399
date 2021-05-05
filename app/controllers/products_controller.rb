@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 before_action :authenticate_user!, only:[:new, :create, :edit, :update]
 before_action :set_product, only:[:show, :edit, :update, :destroy]
 before_action :set_user_validate, only:[:edit, :update]
+before_action :purchaser_nil, only:[:edit, :update]
 
   def index
     @products = Product.all.order("created_at DESC")
@@ -56,4 +57,11 @@ before_action :set_user_validate, only:[:edit, :update]
   def set_user_validate
     redirect_to root_pah if @product.user_id != current_user.id
   end
+
+  def purchaser_nil
+    if @product.purchaser.nil? 
+      redirect_to root_path
+    end
+  end
+
 end
