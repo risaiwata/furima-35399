@@ -55,11 +55,13 @@ before_action :purchaser_nil, only:[:edit, :update]
   end
 
   def set_user_validate
-    redirect_to root_pah if @product.user_id != current_user.id
+    if @product.user_id != current_user.id
+      redirect_to root_path
+    end
   end
-
+  
   def purchaser_nil
-    if @product.purchaser.nil? 
+    if @product.purchaser.present? 
       redirect_to root_path
     end
   end

@@ -40,7 +40,7 @@ class PurchasersController < ApplicationController
   end
 
   def user_auth
-    if current_user.id == @product.user.id || @product.purchaser.nil? 
+    if current_user.id == @product.user.id || @product.purchaser.present? 
       redirect_to root_path
     end
   end
